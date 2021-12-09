@@ -11,10 +11,15 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -33,6 +38,12 @@ public class MainActivity extends BaseActivity {
     private ViewAdapter viewAdapter;
     private ArrayList<ItemModel> temp_list;
     private Context context;
+    private FirebaseAuth mAuth;
+    private String userType;
+
+
+    private TextView total;
+    private ImageButton admin_new;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +54,11 @@ public class MainActivity extends BaseActivity {
 
         temp_list = new ArrayList<ItemModel>();
         context = this;
-
+        total = rootView.findViewById(R.id.total);
+        admin_new = rootView.findViewById(R.id.admin_new);
 
         DataBaseLoadOrderBy("price", Query.Direction.ASCENDING);
-
+        checkUserType();
 
         View clickView = rootView.findViewById(R.id.nav);
         clickView.setOnClickListener(new View.OnClickListener() {
@@ -73,18 +85,22 @@ public class MainActivity extends BaseActivity {
                         switch (String.valueOf(menuItem.getTitle())) {
                             case "price increase":
                                 temp_list = new ArrayList<ItemModel>();
+                                total.setText("0");
                                 DataBaseLoadOrderBy("price", Query.Direction.ASCENDING);
                                 break;
                             case "price decrease":
                                 temp_list = new ArrayList<ItemModel>();
+                                total.setText("0");
                                 DataBaseLoadOrderBy("price", Query.Direction.DESCENDING);
                                 break;
                             case "most popular":
                                 temp_list = new ArrayList<ItemModel>();
+                                total.setText("0");
                                 DataBaseLoadwhereEqualTo("today");
                                 break;
                             case "drink/dish of the day":
                                 temp_list = new ArrayList<ItemModel>();
+                                total.setText("0");
                                 DataBaseLoadwhereEqualTo("popular");
                                 break;
                         }
@@ -94,6 +110,45 @@ public class MainActivity extends BaseActivity {
                 popupMenu.show();
             }
         });
+    }
+
+    private void checkUserType() {
+        FirebaseApp.initializeApp(this);
+        mAuth = FirebaseAuth.getInstance();
+
+
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        if (currentUser != null) {
+            db.collection("Users").whereEqualTo("Uid", currentUser.getUid())
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                switch (String.valueOf(document.getData().get("UserType"))) {
+                                    case "1":
+                                        userType = "1";
+                                        break;
+                                    case "2":
+                                        userType = "2";
+                                        break;
+                                    case "3":
+                                        userType = "3";
+                                        admin_new.setVisibility(View.VISIBLE);
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    });
+
+        } else {
+            // User not connected
+        }
     }
 
     private void adapterLoad() {

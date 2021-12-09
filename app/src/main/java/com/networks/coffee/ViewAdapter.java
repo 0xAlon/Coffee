@@ -2,6 +2,7 @@ package com.networks.coffee;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.bind(items.get(position));
+
         holder.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,7 +88,6 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewHolder> {
             remove = view.findViewById(R.id.remove);
             count = view.findViewById(R.id.count);
             total = ((Activity) context).findViewById(R.id.total);
-
         }
 
         public void bind(ItemModel movieModel) {

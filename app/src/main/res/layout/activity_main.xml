@@ -23,11 +23,21 @@
             app:srcCompat="@drawable/baseline_reorder_20" />
 
         <ImageButton
+            android:id="@+id/admin_new"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginLeft="200dp"
+            style="?android:attr/borderlessButtonStyle"
+            app:srcCompat="@drawable/baseline_add_shopping_cart_24"
+            android:visibility="invisible"/>
+
+        <ImageButton
             android:id="@+id/filter"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginVertical="10dp"
-            android:layout_marginLeft="250dp"
+            android:layout_marginLeft="10dp"
             style="?android:attr/borderlessButtonStyle"
             app:srcCompat="@drawable/baseline_filter_alt_24" />
 
