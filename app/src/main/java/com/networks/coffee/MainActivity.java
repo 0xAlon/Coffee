@@ -5,6 +5,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,43 +22,53 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
 public class MainActivity extends BaseActivity {
 
-    private List<ItemModel> items = null;
-    FirebaseFirestore db;
+
     private String TAG = "MainActivity";
-    private RecyclerView recyclerView;
-    private ViewAdapter viewAdapter;
-    private ArrayList<ItemModel> temp_list;
-    private Context context;
-    private FirebaseAuth mAuth;
     private String userType;
 
+    private List<ItemModel> items = null;
+    private ArrayList<ItemModel> temp_list;
+
+    private FirebaseFirestore db;
+    private FirebaseAuth mAuth;
+
+    private RecyclerView recyclerView;
+    private ViewAdapter viewAdapter;
+
+    private Context context;
+
+    private ImageButton admin_new;
 
     private TextView total;
-    private ImageButton admin_new;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View rootView = getLayoutInflater().inflate(R.layout.activity_main, frameLayout);
 
-        db = FirebaseFirestore.getInstance();
-
-        temp_list = new ArrayList<ItemModel>();
-        context = this;
         total = rootView.findViewById(R.id.total);
         admin_new = rootView.findViewById(R.id.admin_new);
 
-        DataBaseLoadOrderBy("price", Query.Direction.ASCENDING);
+        context = this;
+
+        db = FirebaseFirestore.getInstance();
+
+        temp_list = new ArrayList<ItemModel>();
+
+        DataBaseLoad();
+
         checkUserType();
 
         View clickView = rootView.findViewById(R.id.nav);
@@ -80,28 +91,39 @@ public class MainActivity extends BaseActivity {
                 // Inflating popup menu from popup_menu.xml file
                 popupMenu.getMenuInflater().inflate(R.menu.filter, popupMenu.getMenu());
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         switch (String.valueOf(menuItem.getTitle())) {
                             case "price increase":
-                                temp_list = new ArrayList<ItemModel>();
-                                total.setText("0");
-                                DataBaseLoadOrderBy("price", Query.Direction.ASCENDING);
+                                viewAdapter.swapData();
+                                viewAdapter.notifyDataSetChanged();
+                                Collections.sort(viewAdapter.getItems(), new Comparator<ItemModel>() {
+                                    @Override
+                                    public int compare(ItemModel lhs, ItemModel rhs) {
+                                        return lhs.getPrice().compareTo(rhs.getPrice());
+                                    }
+                                });
+                                viewAdapter.notifyDataSetChanged();
                                 break;
                             case "price decrease":
-                                temp_list = new ArrayList<ItemModel>();
-                                total.setText("0");
-                                DataBaseLoadOrderBy("price", Query.Direction.DESCENDING);
+                                viewAdapter.swapData();
+                                viewAdapter.notifyDataSetChanged();
+                                Collections.sort(viewAdapter.getItems(), new Comparator<ItemModel>() {
+                                    @Override
+                                    public int compare(ItemModel lhs, ItemModel rhs) {
+                                        return rhs.getPrice().compareTo(lhs.getPrice());
+                                    }
+                                });
+                                viewAdapter.notifyDataSetChanged();
                                 break;
                             case "most popular":
-                                temp_list = new ArrayList<ItemModel>();
-                                total.setText("0");
-                                DataBaseLoadwhereEqualTo("today");
+                                viewAdapter.swapData();
+                                viewAdapter.getFilter(1).filter("true");
                                 break;
                             case "drink/dish of the day":
-                                temp_list = new ArrayList<ItemModel>();
-                                total.setText("0");
-                                DataBaseLoadwhereEqualTo("popular");
+                                viewAdapter.swapData();
+                                viewAdapter.getFilter(2).filter("true");
                                 break;
                         }
                         return true;
@@ -116,7 +138,6 @@ public class MainActivity extends BaseActivity {
         FirebaseApp.initializeApp(this);
         mAuth = FirebaseAuth.getInstance();
 
-
         FirebaseUser currentUser = mAuth.getCurrentUser();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -128,13 +149,13 @@ public class MainActivity extends BaseActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 switch (String.valueOf(document.getData().get("UserType"))) {
                                     case "1":
-                                        userType = "1";
+                                        userType = "1"; // connected user
                                         break;
                                     case "2":
-                                        userType = "2";
+                                        userType = "2"; // barista
                                         break;
                                     case "3":
-                                        userType = "3";
+                                        userType = "3"; // admin
                                         admin_new.setVisibility(View.VISIBLE);
                                         break;
                                     default:
@@ -159,18 +180,16 @@ public class MainActivity extends BaseActivity {
         recyclerView.setAdapter(viewAdapter);
     }
 
-    private void DataBaseLoadwhereEqualTo(String field) {
+    private void DataBaseLoad() {
         db.collection("Items")
-                .whereEqualTo(field, true)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("check", document.getId() + " => " + document.getData());
                                 ItemModel items = document.toObject(ItemModel.class);
-                                temp_list.add(new ItemModel(items.getName(), items.getOverview(), items.getPrice(), items.getUrl()));
+                                temp_list.add(new ItemModel(items.getName(), items.getOverview(), items.getPrice(), items.getUrl(), items.getCount(), items.getToday(), items.getPopular()));
                                 adapterLoad();
                             }
                         } else {
@@ -179,26 +198,4 @@ public class MainActivity extends BaseActivity {
                     }
                 });
     }
-
-
-    private void DataBaseLoadOrderBy(String field, Query.Direction query) {
-        db.collection("Items")
-                .orderBy(field, query)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                ItemModel items = document.toObject(ItemModel.class);
-                                temp_list.add(new ItemModel(items.getName(), items.getOverview(), items.getPrice(), items.getUrl()));
-                                adapterLoad();
-                            }
-                        } else {
-                            Log.d("check", "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
-    }
-
 }
