@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -132,6 +134,19 @@ public class MainActivity extends BaseActivity {
                 popupMenu.show();
             }
         });
+
+        //Admin functionality
+        View clickAdd = rootView.findViewById(R.id.admin_new);
+        clickAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), AddNewItem.class);
+                startActivity(intent);
+            }
+        });
+
+
+
     }
 
     private void checkUserType() {
