@@ -23,6 +23,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewHolder> im
 
     private String TAG = "ViewAdapter";
 
+    private final OnItemClickListener listener;
 
     private List<ItemModel> items;
     private List<ItemModel> temp;
@@ -33,12 +34,13 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewHolder> im
     private Context context;
 
     public ViewAdapter(final List<ItemModel> items,
-                       Context context) {
+                       Context context, OnItemClickListener listener) {
         this.items = items;
         this.temp = items;
         filteredItems = new ArrayList<>(items);
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.context = context;
+        this.listener = listener;
     }
 
     @Override
@@ -146,7 +148,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewHolder> im
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
         public final ImageView image;
         public final TextView title;
@@ -180,6 +182,13 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewHolder> im
             price.setText(itemModel.getPrice() + "₪");
             overview.setText(itemModel.getOverview());
             count.setText(String.valueOf(itemModel.getTotal_count()));
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onItemClick(itemModel);
+                }
+            });
+
         }
     }
 }

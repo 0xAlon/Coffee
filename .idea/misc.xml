@@ -13,14 +13,18 @@
         <entry key="app/src/main/res/drawable-v24/baseline_settings_24.xml" value="0.5328125" />
         <entry key="app/src/main/res/drawable/1_background.xml" value="0.13177083333333334" />
         <entry key="app/src/main/res/layout/activity_base.xml" value="0.3072916666666667" />
+        <entry key="app/src/main/res/layout/activity_details.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="1.0219852467899573" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.2640625" />
         <entry key="app/src/main/res/layout/app_bar_base.xml" value="0.3072916666666667" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.2875905797101449" />
         <entry key="app/src/main/res/layout/drawer_header.xml" value="0.3072916666666667" />
         <entry key="app/src/main/res/layout/drawer_item.xml" value="0.30625" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.4329710144927536" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.4329710144927536" />
+        <entry key="app/src/main/res/layout/fragment_item_description.xml" value="0.278125" />
+        <entry key="app/src/main/res/layout/fragment_item_details.xml" value="0.3541666666666667" />
         <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.4329710144927536" />
         <entry key="app/src/main/res/layout/item.xml" value="0.25098001720480095" />
         <entry key="app/src/main/res/layout/item_my_meal.xml" value="0.391304347826087" />

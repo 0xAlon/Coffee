@@ -2,6 +2,7 @@ package com.networks.coffee;
 
 import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,8 +33,7 @@ import java.util.Comparator;
 import java.util.List;
 
 
-public class MainActivity extends BaseActivity {
-
+public class MainActivity extends BaseActivity implements OnItemClickListener{
 
     private String TAG = "MainActivity";
     private String userType;
@@ -51,6 +52,8 @@ public class MainActivity extends BaseActivity {
     private ImageButton admin_new;
 
     private TextView total;
+
+    public static FragmentManager fragmentManager;
 
 
     @Override
@@ -176,7 +179,7 @@ public class MainActivity extends BaseActivity {
         recyclerView = findViewById(R.id.movies_rv_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        viewAdapter = new ViewAdapter(temp_list, context);
+        viewAdapter = new ViewAdapter(temp_list, context,this);
         recyclerView.setAdapter(viewAdapter);
     }
 
@@ -197,5 +200,14 @@ public class MainActivity extends BaseActivity {
                         }
                     }
                 });
+    }
+
+    @Override
+    public void onItemClick(ItemModel item) {
+        fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(android.R.id.content, new ItemDescription(fragmentManager,item,userType))
+                .addToBackStack("main")
+                .commit();
     }
 }
