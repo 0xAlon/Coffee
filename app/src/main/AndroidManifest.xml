@@ -13,9 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Coffee">
         <activity
-            android:name=".TableBooking"
-            android:exported="false" />
-        <activity
             android:name=".AddNewItem"
             android:exported="false" />
         <activity

@@ -52,30 +52,31 @@ public class AddNewItem extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.add_button_id:
-                NewItemInitialize();
-                ItemModel item_to_add = new ItemModel(coffee_name,overview,price,photo_url,max_count,today,popular);
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                db.collection("Items")
-                        .add(item_to_add)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Log.d(TAG, "New Item added with ID: " + documentReference.getId());
-                                Intent intent = new Intent(view.getContext(), MainActivity.class);
-                                startActivity(intent);
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w(TAG, "Error adding document", e);
-                            }
-                        });
-                break;
+        NewItemInitialize();
+        if (checkNewItem()) {
+            switch (view.getId()) {
+                case R.id.add_button_id:
+                    ItemModel item_to_add = new ItemModel(coffee_name, overview, price, photo_url, max_count, today, popular);
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    db.collection("Items")
+                            .add(item_to_add)
+                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                @Override
+                                public void onSuccess(DocumentReference documentReference) {
+                                    Log.d(TAG, "New Item added with ID: " + documentReference.getId());
+                                    Intent intent = new Intent(view.getContext(), MainActivity.class);
+                                    startActivity(intent);
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.w(TAG, "Error adding document", e);
+                                }
+                            });
+                    break;
+            }
         }
-
     }
 
     public void NewItemInitialize(){
@@ -114,6 +115,15 @@ public class AddNewItem extends AppCompatActivity implements View.OnClickListene
         if (rb.equals("Yes")){
             return true;
         }
+        return false;
+    }
+
+    public Boolean checkNewItem(){
+        if (!coffee_name.equals("")&&!overview.equals("")&&!price.equals("")
+                &&!photo_url.equals("")&&!max_count.equals("")){
+            return true;
+        }
+
         return false;
     }
 
