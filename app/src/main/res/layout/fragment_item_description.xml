@@ -45,5 +45,30 @@
             android:layout_marginTop="8dp"
             android:textColor="#A5A5A5"
             android:textSize="18sp"/>
+
+        <LinearLayout
+            android:id="@+id/admin_layout_id"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            >
+            <Button
+                android:id="@+id/edit_button_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Edit"
+                >
+            </Button>
+            <Button
+                android:id="@+id/delete_button_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Delete"
+                >
+            </Button>
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

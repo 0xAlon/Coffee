@@ -22,6 +22,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AddNewItem extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
@@ -56,14 +59,22 @@ public class AddNewItem extends AppCompatActivity implements View.OnClickListene
         if (checkNewItem()) {
             switch (view.getId()) {
                 case R.id.add_button_id:
-                    ItemModel item_to_add = new ItemModel(coffee_name, overview, price, photo_url, max_count, today, popular);
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    Map<String, Object> item = new HashMap<>();
+                    item.put("count", max_count);
+                    item.put("name", coffee_name);
+                    item.put("overview", overview);
+                    item.put("popular", popular);
+                    item.put("price", price);
+                    item.put("today", today);
+                    item.put("url", photo_url);
+
                     db.collection("Items")
-                            .add(item_to_add)
+                            .add(item)
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
-                                    Log.d(TAG, "New Item added with ID: " + documentReference.getId());
+                                    Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
                                     Intent intent = new Intent(view.getContext(), MainActivity.class);
                                     startActivity(intent);
                                 }
@@ -128,5 +139,24 @@ public class AddNewItem extends AppCompatActivity implements View.OnClickListene
     }
 
 
+//                    ItemModel item_to_add = new ItemModel(coffee_name, overview, price, photo_url, max_count, today, popular);
+//                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+//                    db.collection("Items")
+//                            .add(item_to_add)
+//                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                                @Override
+//                                public void onSuccess(DocumentReference documentReference) {
+//                                    Log.d(TAG, "New Item added with ID: " + documentReference.getId());
+//                                    item_to_add.setDocumentId(documentReference.getId());
+//                                    Intent intent = new Intent(view.getContext(), MainActivity.class);
+//                                    startActivity(intent);
+//                                }
+//                            })
+//                            .addOnFailureListener(new OnFailureListener() {
+//                                @Override
+//                                public void onFailure(@NonNull Exception e) {
+//                                    Log.w(TAG, "Error adding document", e);
+//                                }
+//                            });
 
 }
