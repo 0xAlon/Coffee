@@ -10,15 +10,14 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -34,8 +33,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-
-public class MainActivity extends BaseActivity implements OnItemClickListener{
+public class MainActivity extends BaseActivity implements OnItemClickListener {
 
     private String TAG = "MainActivity";
     private String userType = "0";//not connected
@@ -57,7 +55,6 @@ public class MainActivity extends BaseActivity implements OnItemClickListener{
 
     public static FragmentManager fragmentManager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +73,6 @@ public class MainActivity extends BaseActivity implements OnItemClickListener{
         temp_list = new ArrayList<ItemModel>();
 
         DataBaseLoad();
-
         checkUserType();
 
         View clickView = rootView.findViewById(R.id.nav);
@@ -88,13 +84,12 @@ public class MainActivity extends BaseActivity implements OnItemClickListener{
             }
         });
 
-
-        View clickDilter = rootView.findViewById(R.id.filter);
-        clickDilter.setOnClickListener(new View.OnClickListener() {
+        View clickFilter = rootView.findViewById(R.id.filter);
+        clickFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Initializing the popup menu and giving the reference as current context
-                PopupMenu popupMenu = new PopupMenu(MainActivity.this, clickDilter);
+                PopupMenu popupMenu = new PopupMenu(MainActivity.this, clickFilter);
 
                 // Inflating popup menu from popup_menu.xml file
                 popupMenu.getMenuInflater().inflate(R.menu.filter, popupMenu.getMenu());
@@ -152,7 +147,6 @@ public class MainActivity extends BaseActivity implements OnItemClickListener{
         });
 
 
-
     }
 
     private void checkUserType() {
@@ -197,7 +191,7 @@ public class MainActivity extends BaseActivity implements OnItemClickListener{
         recyclerView = findViewById(R.id.movies_rv_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        viewAdapter = new ViewAdapter(temp_list, context,this);
+        viewAdapter = new ViewAdapter(temp_list, context, this);
         recyclerView.setAdapter(viewAdapter);
     }
 
@@ -225,8 +219,13 @@ public class MainActivity extends BaseActivity implements OnItemClickListener{
         checkUserType();
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(android.R.id.content, new ItemDescription(fragmentManager,item,userType))
+                .replace(android.R.id.content, new ItemDescription(fragmentManager, item, userType))
                 .addToBackStack("main")
                 .commit();
+    }
+
+    public void onClickBtn(View view) {
+        Intent intent = new Intent(this, tableManagement.class);
+        startActivity(intent);
     }
 }

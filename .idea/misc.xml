@@ -13,26 +13,43 @@
         <entry key="app/src/main/res/drawable-v24/baseline_remove_24.xml" value="0.13177083333333334" />
         <entry key="app/src/main/res/drawable-v24/baseline_settings_24.xml" value="0.5328125" />
         <entry key="app/src/main/res/drawable/1_background.xml" value="0.13177083333333334" />
-        <entry key="app/src/main/res/layout/activity_add_new_item.xml" value="0.215625" />
+        <entry key="app/src/main/res/drawable/bus_outline.xml" value="0.2942708333333333" />
+        <entry key="app/src/main/res/drawable/selector.xml" value="0.2942708333333333" />
+        <entry key="app/src/main/res/layout/activity_add_new_item.xml" value="0.3641304347826087" />
         <entry key="app/src/main/res/layout/activity_base.xml" value="0.3072916666666667" />
         <entry key="app/src/main/res/layout/activity_edit_item.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/layout/activity_bus_layout.xml" value="0.278125" />
+        <entry key="app/src/main/res/layout/activity_details.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_edit_tables.xml" value="0.3109375" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="1.0219852467899573" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/activity_table_booking.xml" value="0.20625" />
-        <entry key="app/src/main/res/layout/add_new_item.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.2640625" />
+        <entry key="app/src/main/res/layout/activity_payment.xml" value="0.4370471014492754" />
+        <entry key="app/src/main/res/layout/activity_table_management.xml" value="0.3641304347826087" />
         <entry key="app/src/main/res/layout/app_bar_base.xml" value="0.3072916666666667" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.2875905797101449" />
+        <entry key="app/src/main/res/layout/content_bus_layout.xml" value="0.36096014492753625" />
         <entry key="app/src/main/res/layout/drawer_header.xml" value="0.3072916666666667" />
         <entry key="app/src/main/res/layout/drawer_item.xml" value="0.30625" />
         <entry key="app/src/main/res/layout/fragment_edit_item.xml" value="0.24396782841823056" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.4329710144927536" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.4329710144927536" />
         <entry key="app/src/main/res/layout/fragment_item_description.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_first.xml" value="0.36096014492753625" />
+        <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.4329710144927536" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.4329710144927536" />
+        <entry key="app/src/main/res/layout/fragment_inside.xml" value="0.3641304347826087" />
+        <entry key="app/src/main/res/layout/fragment_item_description.xml" value="0.278125" />
+        <entry key="app/src/main/res/layout/fragment_item_details.xml" value="0.3541666666666667" />
+        <entry key="app/src/main/res/layout/fragment_outside.xml" value="0.3614583333333333" />
+        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.4266304347826087" />
         <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.4329710144927536" />
         <entry key="app/src/main/res/layout/item.xml" value="0.25098001720480095" />
         <entry key="app/src/main/res/layout/item_my_meal.xml" value="0.391304347826087" />
+        <entry key="app/src/main/res/layout/list_item_seat.xml" value="0.36096014492753625" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.4329710144927536" />
         <entry key="app/src/main/res/layout/note_item.xml" value="0.391304347826087" />
+        <entry key="app/src/main/res/layout/seat.xml" value="0.278125" />
         <entry key="app/src/main/res/layout/toolbar_home.xml" value="0.3072916666666667" />
         <entry key="app/src/main/res/menu/activity_base_drawer.xml" value="0.3072916666666667" />
         <entry key="app/src/main/res/menu/filter.xml" value="0.115625" />

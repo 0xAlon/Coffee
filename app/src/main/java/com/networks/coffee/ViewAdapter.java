@@ -148,7 +148,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewHolder> im
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public final ImageView image;
         public final TextView title;
@@ -184,7 +184,8 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewHolder> im
             count.setText(String.valueOf(itemModel.getTotal_count()));
 
             itemView.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {
+                @Override
+                public void onClick(View v) {
                     listener.onItemClick(itemModel);
                 }
             });
