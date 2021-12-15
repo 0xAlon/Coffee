@@ -38,7 +38,7 @@ import java.util.List;
 public class MainActivity extends BaseActivity implements OnItemClickListener{
 
     private String TAG = "MainActivity";
-    private String userType;
+    private String userType = "0";//not connected
 
     private List<ItemModel> items = null;
     private ArrayList<ItemModel> temp_list;
@@ -62,6 +62,9 @@ public class MainActivity extends BaseActivity implements OnItemClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View rootView = getLayoutInflater().inflate(R.layout.activity_main, frameLayout);
+
+        //close all fragments
+        getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
         total = rootView.findViewById(R.id.total);
         admin_new = rootView.findViewById(R.id.admin_new);
@@ -207,7 +210,7 @@ public class MainActivity extends BaseActivity implements OnItemClickListener{
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 ItemModel items = document.toObject(ItemModel.class);
-                                temp_list.add(new ItemModel(items.getName(), items.getOverview(), items.getPrice(), items.getUrl(), items.getCount(), items.getToday(), items.getPopular()));
+                                temp_list.add(new ItemModel(items.getName(), items.getOverview(), items.getPrice(), items.getUrl(),items.getCount(),items.getToday(), items.getPopular(),document.getId()));
                                 adapterLoad();
                             }
                         } else {
@@ -219,6 +222,7 @@ public class MainActivity extends BaseActivity implements OnItemClickListener{
 
     @Override
     public void onItemClick(ItemModel item) {
+        checkUserType();
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(android.R.id.content, new ItemDescription(fragmentManager,item,userType))

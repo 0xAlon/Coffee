@@ -14,6 +14,7 @@ public class ItemModel {
     private Boolean today;
     private Boolean popular;
     private int total_count = 0;
+    private String documentId;
 
     public int getTotal_count() {
         return total_count;
@@ -26,7 +27,7 @@ public class ItemModel {
     public ItemModel() {
     } // Default
 
-    public ItemModel(String name, String overview, String price, String url, String count, Boolean today, Boolean popular) {
+    public ItemModel(String name, String overview, String price, String url, String count,Boolean today, Boolean popular,String documentId) {
         this.name = name;
         this.overview = overview;
         this.price = price;
@@ -34,6 +35,7 @@ public class ItemModel {
         this.count = count;
         this.today = today;
         this.popular = popular;
+        this.documentId=documentId;
     }
 
     public Boolean getToday() {
@@ -101,4 +103,11 @@ public class ItemModel {
         this.price = price;
     }
 
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
+    }
+
+    public String getDocumentId() {
+        return documentId;
+    }
 }
