@@ -1,19 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".MainActivity"
+    android:id="@+id/main_container"
     tools:viewBindingIgnore="true">
 
-    <ImageButton
-        android:id="@+id/nav"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginVertical="10dp"
-        android:layout_marginStart="15dp"
-        android:background="@drawable/baseline_reorder_20" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/nav"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginStart="15dp"
+            style="?android:attr/borderlessButtonStyle"
+            app:srcCompat="@drawable/baseline_reorder_20" />
+
+        <ImageButton
+            android:id="@+id/admin_new"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginLeft="200dp"
+            style="?android:attr/borderlessButtonStyle"
+            app:srcCompat="@drawable/baseline_add_shopping_cart_24"
+            android:visibility="invisible"/>
+
+        <ImageButton
+            android:id="@+id/filter"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginLeft="10dp"
+            style="?android:attr/borderlessButtonStyle"
+            app:srcCompat="@drawable/baseline_filter_alt_24" />
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movies_rv_list"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total price:"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_weight="1"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="₪" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/process"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:onClick="onClickBtn"
+        android:text="Proccess" />
+
 
 </LinearLayout>
