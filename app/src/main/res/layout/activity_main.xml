@@ -88,12 +88,13 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/process"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:text="Procces" />
+        android:onClick="onClickBtn"
+        android:text="Proccess" />
 
 
 </LinearLayout>
