@@ -23,10 +23,26 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="100dp"
+            android:gravity="center"
+            android:text="Name"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
             android:gravity="center"
             android:text="Email"
             android:textColor="@color/black"
@@ -63,7 +79,7 @@
             android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Login" />
+            android:text="Register" />
 
     </LinearLayout>
 
