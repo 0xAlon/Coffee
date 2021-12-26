@@ -29,6 +29,7 @@ public class Register extends BaseActivity {
     private TextView password;
     private TextView email;
     private TextView name;
+    private TextView age;
 
     @SuppressLint("CutPasteId")
     @Override
@@ -42,6 +43,7 @@ public class Register extends BaseActivity {
         password = (TextView) view.findViewById(R.id.password);
         email = (TextView) view.findViewById(R.id.mail);
         name = (TextView) view.findViewById(R.id.name);
+        age = (TextView) view.findViewById(R.id.age);
 
 
         Button login = (Button) findViewById(R.id.button);
@@ -64,10 +66,11 @@ public class Register extends BaseActivity {
 
     private void register() {
 
-        String user_email, user_password, user_name;
+        String user_email, user_password, user_name, user_age;
         user_email = email.getText().toString();
         user_password = password.getText().toString();
         user_name = name.getText().toString();
+        user_age = age.getText().toString();
 
         if (TextUtils.isEmpty(user_email)) {
             Toast.makeText(this, "Invalid Email Or Password toast", Toast.LENGTH_LONG).show();
@@ -91,9 +94,11 @@ public class Register extends BaseActivity {
 
                         Map<String, Object> userData = new HashMap<>();
                         userData.put("Uid", user.getUid());
-                        userData.put("Email", String.valueOf(email.getText().toString()));
-                        userData.put("Name", String.valueOf(name.getText().toString()));
-                        userData.put("UserType", "1");
+                        userData.put("Email", email.getText().toString());
+                        userData.put("Name", name.getText().toString());
+                        userData.put("Age", Integer.parseInt(user_age));
+                        userData.put("Vip", false);
+                        userData.put("UserType", 1);
                         db.collection("Users") // Add a new document with a generated ID
                                 .add(userData)
                                 .addOnSuccessListener(documentReference -> {
