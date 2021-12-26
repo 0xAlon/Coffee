@@ -12,7 +12,10 @@ public class ItemModel {
     private String price;
     private String count;
     private Boolean today;
+
+
     private Boolean popular;
+    private Boolean alcoholic;
     private int total_count = 0;
     private String documentId;
 
@@ -27,12 +30,13 @@ public class ItemModel {
     public ItemModel() {
     } // Default
 
-    public ItemModel(String name, String overview, String price, String url, String count,Boolean today, Boolean popular,String documentId) {
+    public ItemModel(String name, String overview, String price, String url, String count,Boolean alcoholic,Boolean today, Boolean popular,String documentId) {
         this.name = name;
         this.overview = overview;
         this.price = price;
         this.url = url;
         this.count = count;
+        this.alcoholic=alcoholic;
         this.today = today;
         this.popular = popular;
         this.documentId=documentId;
@@ -109,5 +113,14 @@ public class ItemModel {
 
     public String getDocumentId() {
         return documentId;
+    }
+
+
+    public Boolean getAlcoholic() {
+        return alcoholic;
+    }
+
+    public void setAlcoholic(Boolean alcoholic) {
+        this.alcoholic = alcoholic;
     }
 }

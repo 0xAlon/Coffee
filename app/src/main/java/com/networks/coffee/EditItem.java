@@ -46,6 +46,7 @@ public class EditItem extends Fragment implements View.OnClickListener{
     private String max_count;
     private Boolean popular;
     private Boolean today;
+    private Boolean alcoholic;
 
     public EditItem(FragmentManager fragmentManager, ItemModel item) {
         this.fragmentManager = fragmentManager;
@@ -80,6 +81,12 @@ public class EditItem extends Fragment implements View.OnClickListener{
                         ((EditText) view.findViewById(R.id.edit_count_id)).setText(document.getString("count"));
                         ((EditText) view.findViewById(R.id.edit_photo_id)).setText(document.getString("url"));
                         //radio button
+                        if (document.getBoolean("alcoholic")==true){
+                            ((RadioGroup) view.findViewById(R.id.edit_alcoholic_radioGroup)).check(R.id.edit_alcoholic_id);
+                        }
+                        else{
+                            ((RadioGroup) view.findViewById(R.id.edit_alcoholic_radioGroup)).check(R.id.edit_no_alcoholic_id);
+                        }
                         if (document.getBoolean("popular")==true){
                             ((RadioGroup) view.findViewById(R.id.edit_popular_radioGroup)).check(R.id.edit_popular_id);
                         }
@@ -92,6 +99,7 @@ public class EditItem extends Fragment implements View.OnClickListener{
                         else{
                             ((RadioGroup) view.findViewById(R.id.edit_today_radioGroup)).check(R.id.edit_no_today_id);
                         }
+
                     } else {
                         Log.d(TAG, "No such document");
                     }
@@ -115,6 +123,7 @@ public class EditItem extends Fragment implements View.OnClickListener{
                             "overview",overview,
                             "popular",popular,
                             "price",price,
+                            "alcoholic",alcoholic,
                             "today",today,
                             "url",photo_url
                     );
@@ -133,8 +142,10 @@ public class EditItem extends Fragment implements View.OnClickListener{
         price = ((TextView) view.findViewById(R.id.edit_price_id)).getText().toString();
         max_count = ((TextView) view.findViewById(R.id.edit_count_id)).getText().toString();
         photo_url= ((TextView) view.findViewById(R.id.edit_photo_id)).getText().toString();
+        alcoholic =RadioGroupInitialize(R.id.edit_alcoholic_radioGroup);
         popular = RadioGroupInitialize(R.id.edit_popular_radioGroup);
         today = RadioGroupInitialize(R.id.edit_today_radioGroup);
+
 
         if (TextUtils.isEmpty(coffee_name)) {
             Toast.makeText(getActivity(), "Enter Coffee name", Toast.LENGTH_LONG).show();
