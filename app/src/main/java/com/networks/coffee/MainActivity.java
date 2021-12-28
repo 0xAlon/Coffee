@@ -36,7 +36,16 @@ import java.util.List;
 public class MainActivity extends BaseActivity implements OnItemClickListener {
 
     private String TAG = "MainActivity";
+
+    public String getUserType() {
+        return userType;
+    }
+
     private String userType = "0";//not connected
+
+
+
+
 
     private List<ItemModel> items = null;
     private ArrayList<ItemModel> temp_list;
@@ -226,6 +235,7 @@ public class MainActivity extends BaseActivity implements OnItemClickListener {
 
     public void onClickBtn(View view) {
         Intent intent = new Intent(this, tableManagement.class);
+        intent.putExtra("userType",userType);
         startActivity(intent);
     }
 }
