@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".adminTableManagement"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".adminTableManagement">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tables_list"
@@ -15,10 +15,14 @@
         android:footerDividersEnabled="false" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/addTables"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginRight="10dp"
+        android:onClick="add_new_table_btn"
+        android:text="@string/add_new_table" />
 
 </LinearLayout>
 
