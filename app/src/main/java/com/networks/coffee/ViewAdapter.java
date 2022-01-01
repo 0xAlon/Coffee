@@ -2,6 +2,8 @@ package com.networks.coffee;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +35,10 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewHolder> im
 
     private Context context;
 
+    private SharedPreferences.Editor PrefsEditor;
+    private SharedPreferences sharedPreferences;
+
+
     public ViewAdapter(final List<ItemModel> items,
                        Context context, OnItemClickListener listener) {
         this.items = items;
@@ -40,6 +46,11 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewHolder> im
         filteredItems = new ArrayList<>(items);
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.context = context;
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        PrefsEditor = sharedPreferences.edit();
+
+
         this.listener = listener;
     }
 
@@ -64,6 +75,11 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewHolder> im
                 if (Integer.parseInt(holder.count.getText().toString()) < Integer.parseInt(items.get(holder.getAdapterPosition()).getCount())) {
                     holder.count.setText(String.valueOf((Integer.parseInt(holder.count.getText().toString()) + 1)));
                     holder.total.setText(String.valueOf(Integer.parseInt(holder.total.getText().toString()) + Integer.parseInt(items.get(holder.getAdapterPosition()).getPrice())));
+
+
+                    PrefsEditor.putInt("total", Integer.parseInt(holder.total.getText().toString())).apply();
+
+
                     items.get(holder.getAdapterPosition()).setTotal_count(items.get(holder.getAdapterPosition()).getTotal_count() + 1);
                 } else {
                     Toast.makeText(context, "Maximum units", Toast.LENGTH_SHORT).show();
@@ -77,6 +93,10 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.ViewHolder> im
                 if (Integer.parseInt(holder.count.getText().toString()) > 0) {
                     holder.count.setText(String.valueOf((Integer.parseInt(holder.count.getText().toString()) - 1)));
                     holder.total.setText(String.valueOf(Integer.parseInt(holder.total.getText().toString()) - Integer.parseInt(items.get(holder.getAdapterPosition()).getPrice())));
+
+                    PrefsEditor.putInt("total", Integer.parseInt(holder.total.getText().toString())).apply();
+
+
                     items.get(holder.getAdapterPosition()).setTotal_count(items.get(holder.getAdapterPosition()).getTotal_count() - 1);
                 }
             }
