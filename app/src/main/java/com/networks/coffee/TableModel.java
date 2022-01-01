@@ -2,6 +2,7 @@ package com.networks.coffee;
 
 public class TableModel {
 
+    private String documentId;
     private String type;
     private int places;
     private Boolean status;
@@ -18,10 +19,11 @@ public class TableModel {
         return places;
     }
 
-    public TableModel(String type, int places, Boolean status) {
+    public TableModel(String type, int places, Boolean status, String documentId) {
         this.type = type;
         this.places = places;
         this.status = status;
+        this.documentId = documentId;
     }
 
     public TableModel() {
@@ -31,4 +33,9 @@ public class TableModel {
     public Boolean getStatus() {
         return status;
     }
+
+    public String getDocumentId() {
+        return documentId;
+    }
 }
+

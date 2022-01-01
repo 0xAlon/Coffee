@@ -60,7 +60,7 @@ public class InsideFragment extends Fragment {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 TableModel tables = document.toObject(TableModel.class);
                                 if (tables.getType().equals("inside")) {
-                                    temp_tables.add(new TableModel(tables.getType(), tables.getPlaces(), tables.getStatus()));
+                                    temp_tables.add(new TableModel(tables.getType(), tables.getPlaces(), tables.getStatus(),tables.getDocumentId()));
                                     adapterLoad();
                                 }
                             }

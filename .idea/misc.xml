@@ -4,37 +4,41 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../../../layout/custom_preview.xml" value="0.28177083333333336" />
-        <entry key="../../../../layout/custom_preview.xml" value="0.30833333333333335" />
+        <entry key="../../../../layout/custom_preview.xml" value="0.25" />
         <entry key="app/src/main/res/drawable-v24/baseline_add_20.xml" value="0.13177083333333334" />
         <entry key="app/src/main/res/drawable-v24/baseline_add_shopping_cart_24.xml" value="0.246875" />
         <entry key="app/src/main/res/drawable-v24/baseline_coffee_20.xml" value="0.3234375" />
         <entry key="app/src/main/res/drawable-v24/baseline_coffee_24.xml" value="0.3234375" />
         <entry key="app/src/main/res/drawable-v24/baseline_filter_alt_24.xml" value="0.13177083333333334" />
         <entry key="app/src/main/res/drawable-v24/baseline_remove_24.xml" value="0.13177083333333334" />
+        <entry key="app/src/main/res/drawable-v24/baseline_reorder_20.xml" value="0.4638888888888889" />
         <entry key="app/src/main/res/drawable-v24/baseline_settings_24.xml" value="0.5328125" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.4638888888888889" />
         <entry key="app/src/main/res/drawable/1_background.xml" value="0.13177083333333334" />
         <entry key="app/src/main/res/drawable/bus_outline.xml" value="0.2942708333333333" />
+        <entry key="app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.5796875" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.4638888888888889" />
         <entry key="app/src/main/res/drawable/selector.xml" value="0.2942708333333333" />
         <entry key="app/src/main/res/layout/activity_add_new_item.xml" value="0.3641304347826087" />
-        <entry key="app/src/main/res/layout/activity_base.xml" value="0.3072916666666667" />
-        <entry key="app/src/main/res/layout/activity_edit_item.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/layout/activity_admin_table_management.xml" value="0.2740628166160081" />
+        <entry key="app/src/main/res/layout/activity_admin_table_managment.xml" value="0.2740628166160081" />
+        <entry key="app/src/main/res/layout/activity_base.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_bus_layout.xml" value="0.278125" />
         <entry key="app/src/main/res/layout/activity_details.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_edit_item.xml" value="0.14895833333333333" />
         <entry key="app/src/main/res/layout/activity_edit_tables.xml" value="0.3109375" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="1.0219852467899573" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.26268115942028986" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.2640625" />
+        <entry key="app/src/main/res/layout/activity_main_table_management.xml" value="0.36594202898550726" />
         <entry key="app/src/main/res/layout/activity_payment.xml" value="0.4370471014492754" />
-        <entry key="app/src/main/res/layout/activity_table_management.xml" value="0.3641304347826087" />
-        <entry key="app/src/main/res/layout/app_bar_base.xml" value="0.3072916666666667" />
+        <entry key="app/src/main/res/layout/activity_table_management.xml" value="0.2740628166160081" />
+        <entry key="app/src/main/res/layout/app_bar_base.xml" value="0.31657608695652173" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.2875905797101449" />
         <entry key="app/src/main/res/layout/content_bus_layout.xml" value="0.36096014492753625" />
         <entry key="app/src/main/res/layout/drawer_header.xml" value="0.3072916666666667" />
         <entry key="app/src/main/res/layout/drawer_item.xml" value="0.30625" />
         <entry key="app/src/main/res/layout/fragment_edit_item.xml" value="0.24396782841823056" />
-        <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.4329710144927536" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.4329710144927536" />
-        <entry key="app/src/main/res/layout/fragment_item_description.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.36096014492753625" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.4329710144927536" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.4329710144927536" />
@@ -50,9 +54,10 @@
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.4329710144927536" />
         <entry key="app/src/main/res/layout/note_item.xml" value="0.391304347826087" />
         <entry key="app/src/main/res/layout/seat.xml" value="0.278125" />
+        <entry key="app/src/main/res/layout/table_rows.xml" value="0.2874873353596758" />
         <entry key="app/src/main/res/layout/toolbar_home.xml" value="0.3072916666666667" />
-        <entry key="app/src/main/res/menu/activity_base_drawer.xml" value="0.3072916666666667" />
-        <entry key="app/src/main/res/menu/filter.xml" value="0.115625" />
+        <entry key="app/src/main/res/menu/activity_base_drawer.xml" value="0.5635416666666667" />
+        <entry key="app/src/main/res/menu/filter.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/menu/new_note_menu.xml" value="0.5026041666666666" />
       </map>
     </option>
@@ -62,5 +67,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.2740628166160081" />
+      </ProjectState>
+    </option>
   </component>
 </project>

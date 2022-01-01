@@ -9,7 +9,10 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import com.paypal.android.sdk.payments.PayPalConfiguration;
@@ -32,6 +35,8 @@ public class tableManagement extends BaseActivity {
     SharedPreferences sharedPref;
 
     private String TAG = "tableManagement";
+    String userType;
+    FloatingActionButton fb;
 
     // config object for our client ID and the environment (sandbox)
     private static PayPalConfiguration config = new PayPalConfiguration()
@@ -49,12 +54,28 @@ public class tableManagement extends BaseActivity {
 
         viewPager = findViewById(R.id.pager);
         tabLayout = findViewById(R.id.tabLayout);
-
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(viewPagerAdapter);
-
         tabLayout.setupWithViewPager(viewPager);
+
+        Intent i = getIntent();
+        Bundle extras = i.getExtras();
+        if (extras.containsKey("userType")) {
+            userType = i.getStringExtra("userType");
+        }
+
+        fb = rootView.findViewById(R.id.fabButton);
+        if (userType.equals("3")) {
+            fb.setVisibility(LinearLayout.VISIBLE);
+        }
+
     }
+
+    public void onClickBt(View view) {
+        Intent intent = new Intent(this, adminTableManagement.class);
+        startActivity(intent);
+    }
+
 
     public void button(View view) {
 
@@ -66,6 +87,10 @@ public class tableManagement extends BaseActivity {
         PayPalPayment payment = new PayPalPayment(new BigDecimal(total_payment), "ILS", "Coffee Shop",
                 PayPalPayment.PAYMENT_INTENT_SALE);
         Intent intent = new Intent(this, PaymentActivity.class);
+       
+        intent.putExtra("userType", userType);
+        startActivity(intent);
+
         intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment);
         startActivityForResult(intent, 0);
 
@@ -93,5 +118,7 @@ public class tableManagement extends BaseActivity {
             Log.i(TAG, "Invalid payment / config set");
         }
         // TODO Create thanks page
+
     }
+
 }

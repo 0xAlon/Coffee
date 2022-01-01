@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Coffee">
         <activity
+            android:name=".adminTableManagement"
+            android:exported="false" />
+        <activity
             android:name=".PaymentActivity"
             android:exported="false" />
         <activity

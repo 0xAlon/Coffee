@@ -9,4 +9,19 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="fabButton">TODO</string>
+    <string name="adminButton">adminButton</string>
+    <string name="submit">adminEditButton</string>
+    <string name="add123213123">ADD123</string>
+    <string name="DeleteTables">DeleteTables</string>
+    <string name="PlaceArea">placeArea</string>
+    <string name="sitAmount">sitAmount</string>
+    <string name="Payment">payment</string>
+    <string name="tabLayoutInsideOutside">tabLayout</string>
+    <string name="viewPagerInsideOutSide">viewPagerInsideOutSide</string>
+    <string name="add_new_table">Add New Table</string>
+    <string name="Choose_Option">Choose Option</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="seats_amount">2 or 4 seats?</string>
 </resources>
