@@ -127,13 +127,17 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.home){
+        if (id == R.id.home) {
             Intent intent = new Intent(this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
-        }
-        else if (id == R.id.login) {
+        } else if (id == R.id.login) {
             Intent intent = new Intent(this, Login.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+
+        } else if (id == R.id.register) {
+            Intent intent = new Intent(this, Register.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         } else if (id == R.id.git) {
@@ -141,7 +145,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             Intent browserIntent =
                     new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             startActivity(browserIntent);
-        }else if (id == R.id.logout) {
+        } else if (id == R.id.logout) {
             SingOut();
         }
         //drawer.closeDrawer(GravityCompat.START);
