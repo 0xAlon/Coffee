@@ -30,9 +30,6 @@
             android:id="@+id/login"
             android:title="Login" />
         <item
-            android:id="@+id/register"
-            android:title="Register" />
-        <item
             android:id="@+id/about"
             android:title="About" />
     </group>
@@ -47,6 +44,11 @@
     </item>
 
     <group android:checkableBehavior="single">
+        <item
+            android:title=""
+            android:enabled="false"
+            android:layout_gravity="left">
+        </item>
         <item
             android:title=""
             android:enabled="false"
