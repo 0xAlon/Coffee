@@ -170,7 +170,7 @@ public class MainActivity extends BaseActivity implements OnItemClickListener{
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                this.age=Integer.parseInt(document.getData().get("age").toString());
+                                this.age=Integer.parseInt(document.getData().get("Age").toString());
                                 switch (String.valueOf(document.getData().get("UserType"))) {
                                     case "1":
                                         userType = "1"; // connected user
