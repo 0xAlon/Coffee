@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Coffee">
         <activity
+<<<<<<< HEAD
             android:name=".adminTableManagement"
             android:exported="false" />
         <activity
@@ -25,6 +26,8 @@
             android:name=".AddNewItem"
             android:exported="false" />
         <activity
+=======
+>>>>>>> parent of 968b2b9 (Merge pull request #8 from 0xAlon/login)
             android:name=".Login"
             android:exported="false" />
         <activity
