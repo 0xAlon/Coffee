@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Coffee">
         <activity
+            android:name=".Register"
+            android:exported="false" />
+        <activity
             android:name=".adminTableManagement"
             android:exported="false" />
         <activity
@@ -41,7 +44,6 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data android:scheme="coffee" />
-
             </intent-filter>
         </activity>
 
@@ -60,7 +62,6 @@
             android:name="io.card.payment.CardIOActivity"
             android:configChanges="keyboardHidden|orientation" />
         <activity android:name="io.card.payment.DataEntryActivity" />
-
     </application>
 
 </manifest>
