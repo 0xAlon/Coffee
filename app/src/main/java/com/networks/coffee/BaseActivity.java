@@ -140,6 +140,11 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(this, Register.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
+        } else if (id == R.id.about) {
+            Intent intent = new Intent(this, About.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+
         } else if (id == R.id.git) {
             String url = "https://github.com/0xAlon/Coffee";
             Intent browserIntent =
