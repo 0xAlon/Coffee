@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -81,6 +82,14 @@ public class ItemDescription extends Fragment implements View.OnClickListener{
         title.setText(item.getName());
         price.setText(item.getPrice() + "₪");
         overview.setText(item.getOverview());
+
+        ImageButton btn = (ImageButton) view.findViewById(R.id.back);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            }
+        });
 
         return view;
     }
