@@ -1,18 +1,9 @@
 package com.networks.coffee;
 
-import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
@@ -43,10 +34,6 @@ public class MainActivity extends BaseActivity implements OnItemClickListener {
     private String userType = "0";//not connected
     private int age;
 
-
-
-
-
     private List<ItemModel> items = null;
     private ArrayList<ItemModel> temp_list;
 
@@ -64,10 +51,15 @@ public class MainActivity extends BaseActivity implements OnItemClickListener {
 
     public static FragmentManager fragmentManager;
 
+public class MainActivity extends BaseActivity{
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View rootView = getLayoutInflater().inflate(R.layout.activity_main, frameLayout);
+        //setContentView(R.layout.activity_main);
+        //super.onCreate(savedInstanceState);
+
 
         //close all fragments
         getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -82,6 +74,7 @@ public class MainActivity extends BaseActivity implements OnItemClickListener {
         temp_list = new ArrayList<ItemModel>();
 
         checkUserType();
+        View rootView = getLayoutInflater().inflate(R.layout.activity_main, frameLayout);
 
         DataBaseLoad();
 
