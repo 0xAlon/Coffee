@@ -36,6 +36,7 @@ public class AddNewItem extends AppCompatActivity implements View.OnClickListene
     private String price;
     private String photo_url;
     private String max_count;
+    private Boolean alcoholic;
     private Boolean popular;
     private Boolean today;
     private Button add_button;
@@ -64,6 +65,7 @@ public class AddNewItem extends AppCompatActivity implements View.OnClickListene
                     item.put("count", max_count);
                     item.put("name", coffee_name);
                     item.put("overview", overview);
+                    item.put("alcoholic",alcoholic);
                     item.put("popular", popular);
                     item.put("price", price);
                     item.put("today", today);
@@ -96,6 +98,7 @@ public class AddNewItem extends AppCompatActivity implements View.OnClickListene
         price = ((TextView) findViewById(R.id.add_price_id)).getText().toString();
         max_count = ((TextView) findViewById(R.id.add_count_id)).getText().toString();
         photo_url=((TextView) findViewById(R.id.add_photo_id)).getText().toString();
+        alcoholic=RadioGroupInitialize(R.id.add_alcoholic_radioGroup);
         popular = RadioGroupInitialize(R.id.popular_radioGroup);
         today = RadioGroupInitialize(R.id.today_radioGroup);
 
@@ -138,25 +141,5 @@ public class AddNewItem extends AppCompatActivity implements View.OnClickListene
         return false;
     }
 
-
-//                    ItemModel item_to_add = new ItemModel(coffee_name, overview, price, photo_url, max_count, today, popular);
-//                    FirebaseFirestore db = FirebaseFirestore.getInstance();
-//                    db.collection("Items")
-//                            .add(item_to_add)
-//                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                                @Override
-//                                public void onSuccess(DocumentReference documentReference) {
-//                                    Log.d(TAG, "New Item added with ID: " + documentReference.getId());
-//                                    item_to_add.setDocumentId(documentReference.getId());
-//                                    Intent intent = new Intent(view.getContext(), MainActivity.class);
-//                                    startActivity(intent);
-//                                }
-//                            })
-//                            .addOnFailureListener(new OnFailureListener() {
-//                                @Override
-//                                public void onFailure(@NonNull Exception e) {
-//                                    Log.w(TAG, "Error adding document", e);
-//                                }
-//                            });
 
 }

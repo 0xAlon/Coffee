@@ -41,6 +41,7 @@ public class MainActivity extends BaseActivity implements OnItemClickListener {
     }
 
     private String userType = "0";//not connected
+    private int age;
 
 
 
@@ -80,8 +81,9 @@ public class MainActivity extends BaseActivity implements OnItemClickListener {
 
         temp_list = new ArrayList<ItemModel>();
 
-        DataBaseLoad();
         checkUserType();
+
+        DataBaseLoad();
 
         View clickView = rootView.findViewById(R.id.nav);
         clickView.setOnClickListener(new View.OnClickListener() {
@@ -170,6 +172,7 @@ public class MainActivity extends BaseActivity implements OnItemClickListener {
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
+                                this.age=Integer.parseInt(document.getData().get("Age").toString());
                                 switch (String.valueOf(document.getData().get("UserType"))) {
                                     case "1":
                                         userType = "1"; // connected user
@@ -212,8 +215,13 @@ public class MainActivity extends BaseActivity implements OnItemClickListener {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 ItemModel items = document.toObject(ItemModel.class);
-                                temp_list.add(new ItemModel(items.getName(), items.getOverview(), items.getPrice(), items.getUrl(),items.getCount(),items.getToday(), items.getPopular(),document.getId()));
-                                adapterLoad();
+                                if (age < 18 && items.getAlcoholic().equals(true)){
+                                    //no add alcoholic drink
+                                }
+                                else{
+                                    temp_list.add(new ItemModel(items.getName(), items.getOverview(), items.getPrice(), items.getUrl(),items.getCount(), items.getAlcoholic(),items.getToday(), items.getPopular(),document.getId()));
+                                    adapterLoad();
+                                }
                             }
                         } else {
                             Log.d("check", "Error getting documents: ", task.getException());
