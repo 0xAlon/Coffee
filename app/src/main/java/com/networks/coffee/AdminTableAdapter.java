@@ -69,8 +69,9 @@ public class AdminTableAdapter extends RecyclerView.Adapter<AdminTableAdapter.Vi
                             public void onSuccess(Void aVoid) {
                                 Log.d(TAG, "DocumentSnapshot successfully deleted!");
                                 Toast.makeText(context.getApplicationContext(), "Record Deleted", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(v.getContext(), AdminTableAdapter.class);
-                                v.getContext().startActivity(intent);
+                                Intent intent = new Intent(context, tableManagement.class);
+                                intent.putExtra("userType","3");
+                                context.startActivity(intent);
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {

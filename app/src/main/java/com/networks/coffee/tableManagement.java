@@ -71,6 +71,7 @@ public class tableManagement extends BaseActivity {
 
     public void onClickBt(View view) {
         Intent intent = new Intent(this, adminTableManagement.class);
+        intent.putExtra("userType",userType);
         startActivity(intent);
     }
 

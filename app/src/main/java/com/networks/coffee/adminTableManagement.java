@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -40,15 +41,21 @@ public class adminTableManagement extends AppCompatActivity implements OnTableCl
 
     private AdminTableAdapter adapter;
 
+    private String userType;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_table_management);
 
+        Intent i = getIntent();
+        Bundle extras = i.getExtras();
+        if (extras.containsKey("userType")) {
+            userType = i.getStringExtra("userType");
+        }
         temp_tables = new ArrayList<TableModel>();
         db = FirebaseFirestore.getInstance();
         DataBaseLoad();
-
         ImageButton btn = (ImageButton) this.findViewById(R.id.back);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,7 +179,9 @@ public class adminTableManagement extends AppCompatActivity implements OnTableCl
                             break;
                         }
                 }
-
+                Intent intent = new Intent(getApplicationContext(), tableManagement.class);
+                intent.putExtra("userType",userType);
+                startActivity(intent);
             }
         })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
