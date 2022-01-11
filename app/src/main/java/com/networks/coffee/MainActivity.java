@@ -3,12 +3,14 @@ package com.networks.coffee;
 import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -202,6 +204,7 @@ public class MainActivity extends BaseActivity implements OnItemClickListener {
         recyclerView = findViewById(R.id.movies_rv_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.addItemDecoration(new SimpleDividerItemDecoration(this));
         viewAdapter = new ViewAdapter(temp_list, context, this);
         recyclerView.setAdapter(viewAdapter);
     }
