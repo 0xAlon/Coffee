@@ -1,4 +1,4 @@
-package com.networks.coffee;
+package com.networks.coffee.Controllers;
 
 
 import android.os.Bundle;
@@ -6,6 +6,9 @@ import android.view.Gravity;
 import android.view.View;
 
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.networks.coffee.R;
+import com.networks.coffee.Resources.BaseActivity;
 
 public class About extends BaseActivity {
 

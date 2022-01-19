@@ -1,4 +1,4 @@
-package com.networks.coffee;
+package com.networks.coffee.Model;
 
 import androidx.annotation.DrawableRes;
 

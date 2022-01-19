@@ -1,8 +1,7 @@
-package com.networks.coffee;
+package com.networks.coffee.Controllers;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,6 +21,10 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.networks.coffee.Adapters.AdminTableAdapter;
+import com.networks.coffee.Interfaces.OnTableClickListener;
+import com.networks.coffee.Model.TableModel;
+import com.networks.coffee.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

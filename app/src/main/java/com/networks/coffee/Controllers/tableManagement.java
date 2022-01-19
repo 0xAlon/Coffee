@@ -1,4 +1,4 @@
-package com.networks.coffee;
+package com.networks.coffee.Controllers;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,6 +13,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import com.networks.coffee.Adapters.ViewPagerAdapter;
+import com.networks.coffee.R;
+import com.networks.coffee.Resources.BaseActivity;
 import com.paypal.android.sdk.payments.PaymentActivity;
 import com.google.android.material.tabs.TabLayout;
 import com.paypal.android.sdk.payments.PayPalConfiguration;

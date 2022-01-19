@@ -1,9 +1,11 @@
-package com.networks.coffee;
+package com.networks.coffee.Controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+
+import com.networks.coffee.R;
 
 public class PaymentActivity extends AppCompatActivity {
 

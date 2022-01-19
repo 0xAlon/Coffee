@@ -1,16 +1,14 @@
-package com.networks.coffee;
+package com.networks.coffee.Controllers;
 
 import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -19,6 +17,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,6 +27,13 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.networks.coffee.Adapters.ViewAdapter;
+import com.networks.coffee.Interfaces.OnItemClickListener;
+import com.networks.coffee.Model.ItemDescription;
+import com.networks.coffee.Model.ItemModel;
+import com.networks.coffee.R;
+import com.networks.coffee.Resources.BaseActivity;
+import com.networks.coffee.Resources.SimpleDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,9 +50,6 @@ public class MainActivity extends BaseActivity implements OnItemClickListener {
 
     private String userType = "0";//not connected
     private int age;
-
-
-
 
 
     private List<ItemModel> items = null;
@@ -153,8 +156,14 @@ public class MainActivity extends BaseActivity implements OnItemClickListener {
         clickAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), AddNewItem.class);
-                startActivity(intent);
+                if (userType.equals("3")) {
+                    Intent intent = new Intent(view.getContext(), AddNewItem.class);
+                    startActivity(intent);
+                }
+                if (userType.equals("2")) {
+                    Toast.makeText(context, "Discount available",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -174,13 +183,15 @@ public class MainActivity extends BaseActivity implements OnItemClickListener {
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                this.age=Integer.parseInt(document.getData().get("Age").toString());
+                                this.age = Integer.parseInt(document.getData().get("Age").toString());
                                 switch (String.valueOf(document.getData().get("UserType"))) {
                                     case "1":
                                         userType = "1"; // connected user
                                         break;
                                     case "2":
                                         userType = "2"; // barista
+                                        ((ImageButton) admin_new).setImageResource(R.drawable.baseline_person_24);
+                                        admin_new.setVisibility(View.VISIBLE);
                                         break;
                                     case "3":
                                         userType = "3"; // admin
@@ -218,11 +229,10 @@ public class MainActivity extends BaseActivity implements OnItemClickListener {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 ItemModel items = document.toObject(ItemModel.class);
-                                if (age < 18 && items.getAlcoholic().equals(true)){
+                                if (age < 18 && items.getAlcoholic().equals(true)) {
                                     //no add alcoholic drink
-                                }
-                                else{
-                                    temp_list.add(new ItemModel(items.getName(), items.getOverview(), items.getPrice(), items.getUrl(),items.getCount(), items.getAlcoholic(),items.getToday(), items.getPopular(),document.getId()));
+                                } else {
+                                    temp_list.add(new ItemModel(items.getName(), items.getOverview(), items.getPrice(), items.getUrl(), items.getCount(), items.getAlcoholic(), items.getToday(), items.getPopular(), document.getId()));
                                     adapterLoad();
                                 }
                             }
@@ -245,7 +255,7 @@ public class MainActivity extends BaseActivity implements OnItemClickListener {
 
     public void onClickBtn(View view) {
         Intent intent = new Intent(this, tableManagement.class);
-        intent.putExtra("userType",userType);
+        intent.putExtra("userType", userType);
         startActivity(intent);
     }
 }

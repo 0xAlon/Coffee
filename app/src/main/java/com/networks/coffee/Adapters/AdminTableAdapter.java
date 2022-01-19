@@ -1,4 +1,4 @@
-package com.networks.coffee;
+package com.networks.coffee.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -17,6 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.networks.coffee.Interfaces.OnTableClickListener;
+import com.networks.coffee.R;
+import com.networks.coffee.Model.TableModel;
 
 import java.util.List;
 

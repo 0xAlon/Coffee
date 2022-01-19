@@ -1,10 +1,13 @@
-package com.networks.coffee;
+package com.networks.coffee.Resources;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.networks.coffee.Controllers.MainActivity;
+import com.networks.coffee.R;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -16,7 +19,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreen.this,MainActivity.class);
+                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }

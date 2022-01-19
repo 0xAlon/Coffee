@@ -16,7 +16,7 @@
 
 
         <activity
-            android:name=".SplashScreen"
+            android:name=".Resources.SplashScreen"
             android:exported="true"
             tools:ignore="AppLinkUrlError">
 
@@ -38,28 +38,28 @@
 
 
         <activity
-            android:name=".About"
+            android:name=".Controllers.About"
             android:exported="false" />
         <activity
-            android:name=".Register"
+            android:name=".Controllers.Register"
             android:exported="false" />
         <activity
-            android:name=".adminTableManagement"
+            android:name=".Controllers.adminTableManagement"
             android:exported="false" />
         <activity
-            android:name=".PaymentActivity"
+            android:name=".Controllers.PaymentActivity"
             android:exported="false" />
         <activity
-            android:name=".tableManagement"
+            android:name=".Controllers.tableManagement"
             android:exported="false" />
         <activity
-            android:name=".AddNewItem"
+            android:name=".Controllers.AddNewItem"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".Controllers.Login"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Controllers.MainActivity"
             android:exported="true"/>
 
         <service
