@@ -1,4 +1,4 @@
-package com.networks.coffee;
+package com.networks.coffee.Controllers;
 
 import android.os.Bundle;
 
@@ -17,11 +17,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.networks.coffee.Adapters.TablesAdapter;
+import com.networks.coffee.Model.TableModel;
+import com.networks.coffee.R;
 
 import java.util.ArrayList;
 
 
-public class InsideFragment extends Fragment {
+public class OutsideFragment extends Fragment {
 
     private static final int COLUMNS = 3;
 
@@ -29,7 +32,7 @@ public class InsideFragment extends Fragment {
 
     private FirebaseFirestore db;
 
-    public InsideFragment() {
+    public OutsideFragment() {
         // Required empty public constructor
     }
 
@@ -39,7 +42,6 @@ public class InsideFragment extends Fragment {
 
         temp_tables = new ArrayList<TableModel>();
         db = FirebaseFirestore.getInstance();
-
         DataBaseLoad();
     }
 
@@ -47,8 +49,9 @@ public class InsideFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inside, container, false);
+        return inflater.inflate(R.layout.fragment_outside, container, false);
     }
+
 
     private void DataBaseLoad() {
         db.collection("Table")
@@ -59,7 +62,7 @@ public class InsideFragment extends Fragment {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 TableModel tables = document.toObject(TableModel.class);
-                                if (tables.getType().equals("inside")) {
+                                if (tables.getType().equals("outside")) {
                                     temp_tables.add(new TableModel(tables.getType(), tables.getPlaces(), tables.getStatus(),tables.getDocumentId()));
                                     adapterLoad();
                                 }

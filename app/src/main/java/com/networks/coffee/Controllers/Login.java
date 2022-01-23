@@ -1,4 +1,4 @@
-package com.networks.coffee;
+package com.networks.coffee.Controllers;
 
 import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +19,8 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.rpc.context.AttributeContext;
+import com.networks.coffee.R;
+import com.networks.coffee.Resources.BaseActivity;
 
 public class Login extends BaseActivity {
 

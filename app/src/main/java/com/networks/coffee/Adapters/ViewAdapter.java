@@ -1,4 +1,4 @@
-package com.networks.coffee;
+package com.networks.coffee.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -17,6 +17,9 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.networks.coffee.Model.ItemModel;
+import com.networks.coffee.Interfaces.OnItemClickListener;
+import com.networks.coffee.R;
 
 import java.util.ArrayList;
 import java.util.List;

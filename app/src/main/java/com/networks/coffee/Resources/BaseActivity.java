@@ -1,4 +1,4 @@
-package com.networks.coffee;
+package com.networks.coffee.Resources;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -17,6 +17,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.networks.coffee.Controllers.About;
+import com.networks.coffee.Controllers.Login;
+import com.networks.coffee.Controllers.MainActivity;
+import com.networks.coffee.R;
+import com.networks.coffee.Controllers.Register;
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     protected FrameLayout frameLayout;

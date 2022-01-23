@@ -1,4 +1,4 @@
-package com.networks.coffee;
+package com.networks.coffee.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.networks.coffee.R;
+import com.networks.coffee.Model.TableModel;
 
 import java.util.List;
 

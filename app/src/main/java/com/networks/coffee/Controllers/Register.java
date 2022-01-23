@@ -1,4 +1,4 @@
-package com.networks.coffee;
+package com.networks.coffee.Controllers;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -16,6 +16,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.networks.coffee.R;
+import com.networks.coffee.Resources.BaseActivity;
 
 import java.util.HashMap;
 import java.util.Map;
